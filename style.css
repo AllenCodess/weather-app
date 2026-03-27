@@ -3,3 +3,14 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-color: #3b82f6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.4rem 0;
+  border: black solid 1px;
+}
