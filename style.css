@@ -8,6 +8,7 @@
 
 body {
   background-color: #2258be;
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
@@ -69,4 +70,25 @@ form {
   display: grid;
   grid-template-columns: 2fr 1fr;
   column-gap: 30px;
+}
+
+/* main display */
+
+.main-text-container {
+  margin: 1rem;
+}
+.main-date {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.degrees {
+  font-size: 60px;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+
+.degree-scale {
+  font-size: 30px;
+  font-weight: 400;
 }

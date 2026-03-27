@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Allen's WeatherApp</title>
   </head>
   <body>
@@ -16,7 +22,13 @@
           <button type="submit" id="btn" class="form-btn">Search</button>
         </form>
         <div class="grid-items">
-          <main class="main-data"></main>
+          <main class="main-data">
+            <div class="main-text-container">
+              <p class="main-date">Fri, 27 Mar 2026</p>
+              <h1>City, Reigon, Country</h1>
+              <p class="degrees">75&deg; <span class="degree-scale">F</span></p>
+            </div>
+          </main>
           <aside class="days-forecast"></aside>
           <div class="hourly-forecast"></div>
         </div>
