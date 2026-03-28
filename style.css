@@ -177,3 +177,19 @@ form {
   width: 100%;
   margin-right: 20px;
 }
+
+/* Hourly Forecast section */
+.header-container {
+  margin: 1rem;
+}
+
+.hourly-forecast-content-items {
+  border: black solid 1px;
+  text-align: center;
+  display: flex;
+}
+
+.hourly-forecast-item {
+  margin: 0 1rem;
+  border: 1px solid red;
+}
