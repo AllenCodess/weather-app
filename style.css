@@ -160,3 +160,19 @@ form {
 .aside-forecast-header {
   font-size: 25px;
 }
+
+.forecast-flex {
+  display: flex;
+  align-items: center;
+  border: black solid 1px;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.aside-div-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 20px;
+}
