@@ -123,7 +123,27 @@ form {
 }
 
 .sub-info {
-  height: 100px;
+  height: 80px;
   width: 200px;
   border: black solid 1px;
+}
+
+.sub-info-title {
+  font-size: 20px;
+}
+
+.sub-info-data {
+  font-size: 15px;
+  margin-top: 0.5rem;
+  font-weight: 700;
+}
+
+.icon-background {
+  color: rgb(37, 63, 175);
+}
+
+.flex-sub-info {
+  display: flex;
+  padding: 1rem;
+  column-gap: 10px;
 }
