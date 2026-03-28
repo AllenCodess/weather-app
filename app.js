@@ -1,22 +1,26 @@
 const apiKey = "11d9a9a0c8e6463287c63348262703";
 
+// fetches data
 async function fetchAPIData() {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Miami&days=3&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Malibu&days=3&aqi=no&alerts=no`,
   );
   const data = await response.json();
 
   console.log(data);
   displayMainData(data);
+  epochConvert(data);
+  displaysAsideData(data);
 }
 
 fetchAPIData();
 
+// displays data
 function displayMainData(data) {
   const div = document.createElement("div");
   div.classList.add("main-text-container");
 
-  div.innerHTML = ` <p class="main-date">Fri, 27 Mar 2026</p>
+  div.innerHTML = ` <p class="main-date">${epochConvert(data)}</p>
               <h1>${data.location.name}, ${data.location.region}, ${data.location.country}</h1>
               <div class="flex-main-weather">
                 <p class="degrees">${data.forecast.forecastday[0].day.avgtemp_f}&deg; <span class="degree-scale">F</span></p>
@@ -109,4 +113,104 @@ function displayMainData(data) {
           
               </div>`;
   document.querySelector("#main-content").appendChild(div);
+}
+
+function displaysAsideData(data) {
+  const div = document.createElement("div");
+  div.classList.add("aside-header", "aside-flex");
+  div.innerHTML = ` 
+            <div class="day-forecast-container">
+              <div class="day-forecast forecast-flex">
+                <div class="forecast-img-container">
+                  <img
+                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="forecast"
+                  />
+                </div>
+                <div class="aside-div-flex">
+                  <div class="aside-temp-container">
+                    <p class="aside-date">Wed, March 30</p>
+                    <p class="aside-temp">60&deg;</p>
+                  </div>
+                  <div class="aside-condition">Clear Sky</div>
+                </div>
+              </div>
+              <div class="day-forecast forecast-flex">
+                <div class="forecast-img-container">
+                  <img
+                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="forecast"
+                  />
+                </div>
+                <div class="aside-div-flex">
+                  <div class="aside-temp-container">
+                    <p class="aside-date">Thurs, March 31</p>
+                    <p class="aside-temp">60&deg;</p>
+                  </div>
+                  <div class="aside-condition">Clear Sky</div>
+                </div>
+              </div>
+              <div class="day-forecast forecast-flex">
+                <div class="forecast-img-container">
+                  <img
+                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="forecast"
+                  />
+                </div>
+                <div class="aside-div-flex">
+                  <div class="aside-temp-container">
+                    <p class="aside-date">Fri, April 1</p>
+                    <p class="aside-temp">60&deg;</p>
+                  </div>
+                  <div class="aside-condition">Clear Sky</div>
+                </div>
+              </div>
+              <div class="day-forecast forecast-flex">
+                <div class="forecast-img-container">
+                  <img
+                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="forecast"
+                  />
+                </div>
+                <div class="aside-div-flex">
+                  <div class="aside-temp-container">
+                    <p class="aside-date">Sat, April 2</p>
+                    <p class="aside-temp">60&deg;</p>
+                  </div>
+                  <div class="aside-condition">Clear Sky</div>
+                </div>
+              </div>
+              <div class="day-forecast forecast-flex">
+                <div class="forecast-img-container">
+                  <img
+                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="forecast"
+                  />
+                </div>
+                <div class="aside-div-flex">
+                  <div class="aside-temp-container">
+                    <p class="aside-date">Sun, April 3</p>
+                    <p class="aside-temp">60&deg;</p>
+                  </div>
+                  <div class="aside-condition">Clear Sky</div>
+                </div>
+              </div>`;
+  document.querySelector(".days-forecast").appendChild(div);
+}
+
+// converts epoch date to human readable date
+
+function epochConvert(data) {
+  //   console.log(data.location.localtime_epoch);
+
+  const epoch = data.current.last_updated_epoch;
+  const date = new Date(epoch * 1000);
+  const datedToString = date.toDateString();
+
+  return datedToString;
 }
