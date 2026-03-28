@@ -9,6 +9,7 @@
 body {
   background-color: #2258be;
   font-family: "Roboto", sans-serif;
+  color: white;
 }
 
 .container {
@@ -91,4 +92,23 @@ form {
 .degree-scale {
   font-size: 30px;
   font-weight: 400;
+}
+
+.flex-degrees {
+  display: flex;
+  column-gap: 20px;
+}
+
+.flex-main-weather {
+  display: flex;
+  align-items: center;
+}
+
+.condition {
+  font-size: 20px;
+  margin-bottom: 0.4rem;
+}
+
+.main-img {
+  width: 100px;
 }
