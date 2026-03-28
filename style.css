@@ -147,3 +147,16 @@ form {
   padding: 1rem;
   column-gap: 10px;
 }
+
+/* aside flex */
+.aside-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  column-gap: 10px;
+}
+
+.aside-forecast-header {
+  font-size: 25px;
+}
