@@ -13,13 +13,16 @@ function searchForm(e) {
 
 // fetches data
 async function fetchAPIData(location) {
+  // Clears data
+  document.querySelector("#main-content").innerHTML = "";
+  document.querySelector(".day-forecast-container").innerHTML = "";
+  document.querySelector(".hourly-forecast-content-items").innerHTML = "";
   const response = await fetch(
     `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=6&aqi=no&alerts=no`,
   );
   const data = await response.json();
 
   displayMainData(data);
-  epochConvert(data);
   displaysAsideData(data);
   displaysHourlyData(data);
 }
@@ -28,6 +31,7 @@ async function fetchAPIData(location) {
 function displayMainData(data) {
   const div = document.createElement("div");
   div.classList.add("main-text-container");
+
   div.innerHTML = ` <p class="main-date">${epochConvert(data.location.localtime_epoch)}</p>
               <h1>${data.location.name}, ${data.location.region}, ${data.location.country}</h1>
               <div class="flex-main-weather">
