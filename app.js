@@ -3,7 +3,7 @@ const apiKey = "11d9a9a0c8e6463287c63348262703";
 // fetches data
 async function fetchAPIData() {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Nevada&days=6&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=dallas&days=6&aqi=no&alerts=no`,
   );
   const data = await response.json();
 
@@ -153,9 +153,15 @@ function displaysHourlyData(data) {
   });
 }
 
+//formats the 24 hour time into 12 hours
 function formatTime(data) {
-  console.log(data);
-  return data.split(" ")[1];
+  const time = data.split(" ")[1];
+  const [hour, minute] = time.split(":");
+  const h = parseInt(hour);
+  const ampm = h >= 12 ? "PM" : "AM";
+  const formattedHour = h % 12 || 12;
+  const newTime = `${formattedHour}:${minute} ${ampm}`;
+  return newTime;
 }
 
 // converts epoch date to human readable date
