@@ -7,10 +7,10 @@ async function fetchAPIData() {
   );
   const data = await response.json();
 
-  console.log(data);
   displayMainData(data);
   epochConvert(data);
   displaysAsideData(data);
+  displaysHourlyData(data);
 }
 
 fetchAPIData();
@@ -116,10 +116,8 @@ function displayMainData(data) {
 }
 
 function displaysAsideData(data) {
-  console.log(data);
   // Loops through the array within data.forecast.forecastday and executes the following code
   data.forecast.forecastday.slice(1).forEach((day) => {
-    console.log(day);
     const div = document.createElement("div");
     div.classList.add("day-forecast", "forecast-flex");
     div.innerHTML = `  <div class="forecast-img-container">
@@ -138,6 +136,21 @@ function displaysAsideData(data) {
                 </div>
               `;
     document.querySelector(".day-forecast-container").appendChild(div);
+  });
+}
+
+function displaysHourlyData(data) {
+  console.log(data);
+  data.forecast.forecastday[0].hour.slice(0, 6).forEach((hour) => {
+    console.log(hour);
+    const div = document.createElement("div");
+    div.classList.add("hourly-forecast-item");
+    div.innerHTML = ` <div class="hourly-forecast-item">
+                <p>8AM</p>
+                <img src="//cdn.weatherapi.com/weather/64x64/day/113.png" alt="" class="forecast" />
+                <p>55&deg;</p>
+              </div>`;
+    document.querySelector(".hourly-forecast-content-items").appendChild(div);
   });
 }
 
