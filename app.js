@@ -3,7 +3,7 @@ const apiKey = "11d9a9a0c8e6463287c63348262703";
 // fetches data
 async function fetchAPIData() {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Malibu&days=5&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Atlanta&days=6&aqi=no&alerts=no`,
   );
   const data = await response.json();
 
@@ -20,7 +20,7 @@ function displayMainData(data) {
   const div = document.createElement("div");
   div.classList.add("main-text-container");
 
-  div.innerHTML = ` <p class="main-date">${epochConvert(data)}</p>
+  div.innerHTML = ` <p class="main-date">${epochConvert(data.location.localtime_epoch)}</p>
               <h1>${data.location.name}, ${data.location.region}, ${data.location.country}</h1>
               <div class="flex-main-weather">
                 <p class="degrees">${data.forecast.forecastday[0].day.avgtemp_f}&deg; <span class="degree-scale">F</span></p>
@@ -117,8 +117,8 @@ function displayMainData(data) {
 
 function displaysAsideData(data) {
   console.log(data);
-
-  data.forecast.forecastday.forEach((day) => {
+  // Loops through the array within data.forecast.forecastday and executes the following code
+  data.forecast.forecastday.slice(1).forEach((day) => {
     console.log(day);
     const div = document.createElement("div");
     div.classList.add("day-forecast", "forecast-flex");
@@ -157,7 +157,7 @@ function epochConvert(epoch) {
   }
   return apiDate.toLocaleDateString("en-US", {
     weekday: "short",
-    month: "long",
+    month: "short",
     day: "numeric",
   });
 }

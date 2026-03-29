@@ -162,6 +162,10 @@ form {
   font-size: 25px;
 }
 
+.aside-condition {
+  margin: 0 0.5rem;
+}
+
 .forecast-flex {
   display: flex;
   align-items: center;
@@ -176,7 +180,6 @@ form {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-right: 20px;
 }
 
 /* Hourly Forecast section */
