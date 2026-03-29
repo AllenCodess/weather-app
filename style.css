@@ -155,6 +155,7 @@ form {
   justify-content: center;
   margin-top: 1rem;
   column-gap: 10px;
+  width: 100%;
 }
 
 .aside-forecast-header {

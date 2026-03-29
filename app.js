@@ -117,36 +117,35 @@ function displayMainData(data) {
 
 function displaysAsideData(data) {
   const div = document.createElement("div");
-  div.classList.add("aside-header", "aside-flex");
   div.innerHTML = ` 
-            <div class="day-forecast-container">
+            
               <div class="day-forecast forecast-flex">
                 <div class="forecast-img-container">
                   <img
-                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+                    src="${data.current.condition.icon}"
                     alt=""
                     class="forecast"
                   />
                 </div>
                 <div class="aside-div-flex">
                   <div class="aside-temp-container">
-                    <p class="aside-date">Wed, March 30</p>
-                    <p class="aside-temp">60&deg;</p>
+                    <p class="aside-date">${epochConvert(data)}</p>
+                    <p class="aside-temp">${data.forecast.forecastday[0].day.avgtemp_f}&deg;</p>
                   </div>
-                  <div class="aside-condition">Clear Sky</div>
+                  <div class="aside-condition">${data.current.condition.text}</div>
                 </div>
               </div>
               <div class="day-forecast forecast-flex">
                 <div class="forecast-img-container">
                   <img
-                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+                    src="${data.forecast.forecastday[1].day.condition.icon}"
                     alt=""
                     class="forecast"
                   />
                 </div>
                 <div class="aside-div-flex">
                   <div class="aside-temp-container">
-                    <p class="aside-date">Thurs, March 31</p>
+                    <p class="aside-date">${epochConvert(data)}Thurs, March 31</p>
                     <p class="aside-temp">60&deg;</p>
                   </div>
                   <div class="aside-condition">Clear Sky</div>
@@ -199,18 +198,28 @@ function displaysAsideData(data) {
                   </div>
                   <div class="aside-condition">Clear Sky</div>
                 </div>
-              </div>`;
-  document.querySelector(".days-forecast").appendChild(div);
+              `;
+  document.querySelector(".day-forecast-container").appendChild(div);
 }
 
 // converts epoch date to human readable date
 
 function epochConvert(data) {
-  //   console.log(data.location.localtime_epoch);
+  const epoch = data.location.localtime_epoch;
+  const apiDate = new Date(epoch * 1000);
 
-  const epoch = data.current.last_updated_epoch;
-  const date = new Date(epoch * 1000);
-  const datedToString = date.toDateString();
+  const today = new Date(); //gives me todays date
+  const isToday =
+    apiDate.getFullYear() === today.getFullYear() &&
+    apiDate.getMonth() === today.getMonth() &&
+    apiDate.getDate() === today.getDate();
 
-  return datedToString;
+  if (isToday) {
+    return "Today";
+  }
+  return apiDate.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "long",
+    day: "numeric",
+  });
 }
