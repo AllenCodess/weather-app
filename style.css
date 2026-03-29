@@ -58,13 +58,6 @@ form {
   margin: 1rem;
 }
 
-.hourly-forecast {
-  border: red solid 1px;
-  height: 200px;
-  width: 90%;
-  margin-left: 1rem;
-}
-
 /* Grid Display */
 
 .grid-items {
@@ -188,7 +181,7 @@ form {
 }
 
 .hourly-forecast-content-items {
-  border: black solid 1px;
+  /* border: black solid 1px; */
   text-align: center;
   display: flex;
 }
@@ -196,4 +189,11 @@ form {
 .hourly-forecast-item {
   margin: 0 1rem;
   /* border: 1px solid red; */
+}
+
+.hourly-forecast {
+  border: red solid 1px;
+  height: 200px;
+  width: 100%;
+  margin-left: 1rem;
 }

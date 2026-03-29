@@ -3,7 +3,7 @@ const apiKey = "11d9a9a0c8e6463287c63348262703";
 // fetches data
 async function fetchAPIData() {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Atlanta&days=6&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Nevada&days=6&aqi=no&alerts=no`,
   );
   const data = await response.json();
 
@@ -142,16 +142,20 @@ function displaysAsideData(data) {
 function displaysHourlyData(data) {
   console.log(data);
   data.forecast.forecastday[0].hour.slice(0, 6).forEach((hour) => {
-    console.log(hour);
     const div = document.createElement("div");
     div.classList.add("hourly-forecast-item");
     div.innerHTML = ` <div class="hourly-forecast-item">
-                <p>8AM</p>
-                <img src="//cdn.weatherapi.com/weather/64x64/day/113.png" alt="" class="forecast" />
-                <p>55&deg;</p>
+                <p>${formatTime(hour.time)}</p>
+                <img src="${hour.condition.icon}" alt="" class="forecast" />
+                <p>${hour.temp_f}&deg;</p>
               </div>`;
     document.querySelector(".hourly-forecast-content-items").appendChild(div);
   });
+}
+
+function formatTime(data) {
+  console.log(data);
+  return data.split(" ")[1];
 }
 
 // converts epoch date to human readable date
