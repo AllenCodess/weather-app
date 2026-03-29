@@ -3,7 +3,7 @@ const apiKey = "11d9a9a0c8e6463287c63348262703";
 // fetches data
 async function fetchAPIData() {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=dallas&days=6&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=tokyo&days=6&aqi=no&alerts=no`,
   );
   const data = await response.json();
 
