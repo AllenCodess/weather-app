@@ -1,9 +1,13 @@
 const apiKey = "11d9a9a0c8e6463287c63348262703";
 
+//Global DOM Elements
 const form = document.querySelector("form");
 const userInput = document.querySelector(".form-input");
+
+// event listner(s)
 form.addEventListener("submit", searchForm);
 
+// function to get inputvalue
 function searchForm(e) {
   e.preventDefault();
 
@@ -11,12 +15,14 @@ function searchForm(e) {
   fetchAPIData(location);
 }
 
-// fetches data
+// funtion fetches data
 async function fetchAPIData(location) {
-  // Clears data
+  // Clears data to prevent overlapping
   document.querySelector("#main-content").innerHTML = "";
   document.querySelector(".day-forecast-container").innerHTML = "";
   document.querySelector(".hourly-forecast-content-items").innerHTML = "";
+
+  // fetches data
   const response = await fetch(
     `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=6&aqi=no&alerts=no`,
   );
@@ -153,14 +159,14 @@ function displaysAsideData(data) {
 
 function displaysHourlyData(data) {
   console.log(data);
-  data.forecast.forecastday[0].hour.slice(0, 6).forEach((hour) => {
+  data.forecast.forecastday[0].hour.forEach((hour) => {
     const div = document.createElement("div");
     div.classList.add("hourly-forecast-item");
-    div.innerHTML = ` <div class="hourly-forecast-item">
+    div.innerHTML = ` 
                 <p>${formatTime(hour.time)}</p>
                 <img src="${hour.condition.icon}" alt="" class="forecast" />
                 <p>${hour.temp_f}&deg;</p>
-              </div>`;
+              `;
     document.querySelector(".hourly-forecast-content-items").appendChild(div);
   });
 }

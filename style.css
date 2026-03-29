@@ -184,10 +184,15 @@ form {
   /* border: black solid 1px; */
   text-align: center;
   display: flex;
+  overflow-x: auto;
+  width: 100%;
+  scrollbar-width: thin;
 }
 
 .hourly-forecast-item {
   margin: 0 1rem;
+  min-width: 80px;
+  flex: 0 0 auto;
   /* border: 1px solid red; */
 }
 
@@ -196,4 +201,6 @@ form {
   height: 200px;
   width: 100%;
   margin-left: 1rem;
+  grid-column: 1 / -2;
+  overflow: hidden;
 }
