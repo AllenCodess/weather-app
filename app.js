@@ -1,9 +1,20 @@
 const apiKey = "11d9a9a0c8e6463287c63348262703";
 
+const form = document.querySelector("form");
+const userInput = document.querySelector(".form-input");
+form.addEventListener("submit", searchForm);
+
+function searchForm(e) {
+  e.preventDefault();
+
+  const location = userInput.value;
+  fetchAPIData(location);
+}
+
 // fetches data
-async function fetchAPIData() {
+async function fetchAPIData(location) {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=tokyo&days=6&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=6&aqi=no&alerts=no`,
   );
   const data = await response.json();
 
@@ -13,13 +24,10 @@ async function fetchAPIData() {
   displaysHourlyData(data);
 }
 
-fetchAPIData();
-
 // displays data
 function displayMainData(data) {
   const div = document.createElement("div");
   div.classList.add("main-text-container");
-
   div.innerHTML = ` <p class="main-date">${epochConvert(data.location.localtime_epoch)}</p>
               <h1>${data.location.name}, ${data.location.region}, ${data.location.country}</h1>
               <div class="flex-main-weather">
