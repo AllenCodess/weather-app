@@ -3,7 +3,7 @@ const apiKey = "11d9a9a0c8e6463287c63348262703";
 // fetches data
 async function fetchAPIData() {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Malibu&days=3&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Malibu&days=5&aqi=no&alerts=no`,
   );
   const data = await response.json();
 
@@ -116,96 +116,34 @@ function displayMainData(data) {
 }
 
 function displaysAsideData(data) {
-  const div = document.createElement("div");
-  div.innerHTML = ` 
-            
-              <div class="day-forecast forecast-flex">
-                <div class="forecast-img-container">
+  console.log(data);
+
+  data.forecast.forecastday.forEach((day) => {
+    console.log(day);
+    const div = document.createElement("div");
+    div.classList.add("day-forecast", "forecast-flex");
+    div.innerHTML = `  <div class="forecast-img-container">
                   <img
-                    src="${data.current.condition.icon}"
+                    src="${day.day.condition.icon}"
                     alt=""
                     class="forecast"
                   />
                 </div>
                 <div class="aside-div-flex">
                   <div class="aside-temp-container">
-                    <p class="aside-date">${epochConvert(data)}</p>
-                    <p class="aside-temp">${data.forecast.forecastday[0].day.avgtemp_f}&deg;</p>
+                    <p class="aside-date">${epochConvert(day.date_epoch)}</p>
+                    <p class="aside-temp">${day.day.avgtemp_f}&deg;</p>
                   </div>
-                  <div class="aside-condition">${data.current.condition.text}</div>
-                </div>
-              </div>
-              <div class="day-forecast forecast-flex">
-                <div class="forecast-img-container">
-                  <img
-                    src="${data.forecast.forecastday[1].day.condition.icon}"
-                    alt=""
-                    class="forecast"
-                  />
-                </div>
-                <div class="aside-div-flex">
-                  <div class="aside-temp-container">
-                    <p class="aside-date">${epochConvert(data)}Thurs, March 31</p>
-                    <p class="aside-temp">60&deg;</p>
-                  </div>
-                  <div class="aside-condition">Clear Sky</div>
-                </div>
-              </div>
-              <div class="day-forecast forecast-flex">
-                <div class="forecast-img-container">
-                  <img
-                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
-                    alt=""
-                    class="forecast"
-                  />
-                </div>
-                <div class="aside-div-flex">
-                  <div class="aside-temp-container">
-                    <p class="aside-date">Fri, April 1</p>
-                    <p class="aside-temp">60&deg;</p>
-                  </div>
-                  <div class="aside-condition">Clear Sky</div>
-                </div>
-              </div>
-              <div class="day-forecast forecast-flex">
-                <div class="forecast-img-container">
-                  <img
-                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
-                    alt=""
-                    class="forecast"
-                  />
-                </div>
-                <div class="aside-div-flex">
-                  <div class="aside-temp-container">
-                    <p class="aside-date">Sat, April 2</p>
-                    <p class="aside-temp">60&deg;</p>
-                  </div>
-                  <div class="aside-condition">Clear Sky</div>
-                </div>
-              </div>
-              <div class="day-forecast forecast-flex">
-                <div class="forecast-img-container">
-                  <img
-                    src="//cdn.weatherapi.com/weather/64x64/day/113.png"
-                    alt=""
-                    class="forecast"
-                  />
-                </div>
-                <div class="aside-div-flex">
-                  <div class="aside-temp-container">
-                    <p class="aside-date">Sun, April 3</p>
-                    <p class="aside-temp">60&deg;</p>
-                  </div>
-                  <div class="aside-condition">Clear Sky</div>
+                  <div class="aside-condition">${day.day.condition.text}</div>
                 </div>
               `;
-  document.querySelector(".day-forecast-container").appendChild(div);
+    document.querySelector(".day-forecast-container").appendChild(div);
+  });
 }
 
 // converts epoch date to human readable date
 
-function epochConvert(data) {
-  const epoch = data.location.localtime_epoch;
+function epochConvert(epoch) {
   const apiDate = new Date(epoch * 1000);
 
   const today = new Date(); //gives me todays date
