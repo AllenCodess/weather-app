@@ -233,3 +233,7 @@ form {
   border: none;
   margin-right: 1rem;
 }
+
+.red {
+  color: red;
+}

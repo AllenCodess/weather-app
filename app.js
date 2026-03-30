@@ -226,4 +226,12 @@ function addLocalStorageToDOM(location) {
   li.appendChild(document.createTextNode(location));
   li.classList.add("searched-item");
   document.querySelector(".searched-items-container").appendChild(li);
+
+  const btn = document.createElement("button");
+  btn.classList.add("rm");
+  li.appendChild(btn);
+
+  const icon = document.createElement("i");
+  icon.classList.add("fa-solid", "fa-x", "red");
+  btn.appendChild(icon);
 }
