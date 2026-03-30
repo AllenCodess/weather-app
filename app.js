@@ -140,7 +140,7 @@ function displaysAsideData(data) {
   // Loops through the array within data.forecast.forecastday and executes the following code
   data.forecast.forecastday.slice(1).forEach((day) => {
     const div = document.createElement("div");
-    div.classList.add("day-forecast", "forecast-flex");
+    div.classList.add("day-forecast", "forecast-flex", "glass-card");
     div.innerHTML = `  <div class="forecast-img-container">
                   <img
                     src="${day.day.condition.icon}"
@@ -163,7 +163,7 @@ function displaysAsideData(data) {
 function displaysHourlyData(data) {
   data.forecast.forecastday[0].hour.forEach((hour) => {
     const div = document.createElement("div");
-    div.classList.add("hourly-forecast-item");
+    div.classList.add("hourly-forecast-item", "glass-card");
     div.innerHTML = ` 
                 <p>${formatTime(hour.time)}</p>
                 <img src="${hour.condition.icon}" alt="" class="forecast" />
