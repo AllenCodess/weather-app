@@ -35,12 +35,12 @@ form {
 .form-input {
   padding: 0.1rem 2rem;
   border-radius: 20px;
-  font-size: 30px;
+  font-size: 20px;
   border: none;
 }
 
 .form-btn {
-  font-size: 30px;
+  font-size: 20px;
   margin-left: 1rem;
   padding: 0.1rem 1rem;
   border: none;
@@ -249,6 +249,21 @@ form {
 
 .red {
   color: red;
+}
+
+/* Displays content if it exist */
+.main-data,
+.days-forecast,
+.hourly-forecast,
+.recent-searches-container {
+  display: none;
+}
+
+body.has-searches #main-content,
+body.has-searches .days-forecast,
+body.has-searches .hourly-forecast,
+body.has-searches .recent-searches-container {
+  display: block;
 }
 
 /* Media Queries */

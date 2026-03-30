@@ -207,6 +207,7 @@ function epochConvert(epoch) {
 
 // takes in userinput and saves it in localstorage
 function setLocalStorageItems(location) {
+  console.log(location);
   let itemsFromStorage = getItemsFromLocalStorage();
   itemsFromStorage.push(location);
   if (itemsFromStorage.length > 4) {
@@ -252,6 +253,12 @@ function displayLocalStorageItems() {
 }
 
 displayLocalStorageItems();
+updateLayoutVisibility();
+
+const savedItems = getItemsFromLocalStorage();
+if (savedItems.length > 0) {
+  fetchAPIData(savedItems[savedItems.length - 1]);
+}
 
 // selects the button through event delegation
 
@@ -274,6 +281,7 @@ function removeItemFromStorage(item) {
   localStorage.setItem("locations", JSON.stringify(itemsFromStorage));
 
   renderLocalStorageItems();
+  updateLayoutVisibility();
 }
 
 function renderLocalStorageItems() {
@@ -282,4 +290,15 @@ function renderLocalStorageItems() {
   const items = getItemsFromLocalStorage();
 
   items.forEach((item) => addLocalStorageToDOM(item));
+  updateLayoutVisibility();
+}
+
+function updateLayoutVisibility() {
+  const items = getItemsFromLocalStorage();
+
+  if (items.length > 0) {
+    document.body.classList.add("has-searches");
+  } else {
+    document.body.classList.remove("has-searches");
+  }
 }
