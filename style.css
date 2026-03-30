@@ -214,3 +214,12 @@ form {
 .recent-searches-header {
   text-align: center;
 }
+
+.searched-item {
+  list-style: none;
+  border: 1px solid red;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  font-size: 20px;
+  font-weight: 600;
+}

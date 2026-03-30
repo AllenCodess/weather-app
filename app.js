@@ -13,6 +13,8 @@ function searchForm(e) {
 
   const location = userInput.value;
   fetchAPIData(location);
+  setLocalStorageItems(location);
+  addLocalStorageToDOM(location);
 }
 
 // funtion fetches data
@@ -201,4 +203,18 @@ function epochConvert(epoch) {
     month: "short",
     day: "numeric",
   });
+}
+
+// takes in userinput and saves it in localstorage
+function setLocalStorageItems(location) {
+  console.log(location);
+  const places = [location];
+  localStorage.setItem("locations", JSON.stringify(places));
+}
+
+function addLocalStorageToDOM(location) {
+  const li = document.createElement("li");
+  li.appendChild(document.createTextNode(location));
+  li.classList.add("searched-item");
+  document.querySelector(".searched-items-container").appendChild(li);
 }
