@@ -59,7 +59,7 @@ function displayMainData(data) {
                 <p class="lowest">L: ${data.forecast.forecastday[0].day.mintemp_f}&deg;</p>
               </div>
               <div class="sub-info-container">
-              <div class="sub-info flex-sub-info">
+              <div class="sub-info flex-sub-info glass-card">
                 <div class="sub-info-icon">
                   <span class="fa-stack fa-1x">
                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
@@ -74,7 +74,7 @@ function displayMainData(data) {
                   <p class="sub-info-data">${data.current.humidity}%</p>
                 </div>
               </div>
-              <div class="sub-info flex-sub-info">
+              <div class="sub-info flex-sub-info glass-card">
                 <div class="sub-info-icon">
                   <span class="fa-stack fa-1x">
                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
@@ -90,7 +90,7 @@ function displayMainData(data) {
                   <p class="sub-info-data">${data.current.wind_mph} mph</p>
                 </div>
               </div>
-              <div class="sub-info flex-sub-info">
+              <div class="sub-info flex-sub-info glass-card">
                 <div class="sub-info-icon">
                   <span class="fa-stack fa-1x">
                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
@@ -105,7 +105,7 @@ function displayMainData(data) {
                   <p class="sub-info-data">${data.current.feelslike_f}&deg;</p>
                 </div>
               </div>
-              <div class="sub-info flex-sub-info">
+              <div class="sub-info flex-sub-info glass-card">
                 <div class="sub-info-icon">
                   <span class="fa-stack fa-1x">
                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
@@ -117,7 +117,7 @@ function displayMainData(data) {
                   <p class="sub-info-data">${data.current.heatindex_f}&deg;</p>
                 </div>
               </div>
-              <div class="sub-info flex-sub-info">
+              <div class="sub-info flex-sub-info glass-card">
                 <div class="sub-info-icon">
                   <span class="fa-stack fa-1x">
                     <i class="fa fa-circle fa-stack-2x icon-background"></i>
