@@ -207,8 +207,14 @@ function epochConvert(epoch) {
 
 // takes in userinput and saves it in localstorage
 function setLocalStorageItems(location) {
-  console.log(location);
+  let itemsFromStorage = getItemsFromLocalStorage();
+  itemsFromStorage.push(location);
 
+  localStorage.setItem("locations", JSON.stringify(itemsFromStorage));
+}
+
+// retrieve items from localstorage
+function getItemsFromLocalStorage() {
   let itemsFromStorage;
 
   if (localStorage.getItem("locations") === null) {
@@ -216,11 +222,11 @@ function setLocalStorageItems(location) {
   } else {
     itemsFromStorage = JSON.parse(localStorage.getItem("locations"));
   }
-  itemsFromStorage.push(location);
-
-  localStorage.setItem("locations", JSON.stringify(itemsFromStorage));
+  console.log(itemsFromStorage);
+  return itemsFromStorage;
 }
 
+// adds localstorage items to the DOM
 function addLocalStorageToDOM(location) {
   const li = document.createElement("li");
   li.appendChild(document.createTextNode(location));
@@ -235,3 +241,11 @@ function addLocalStorageToDOM(location) {
   icon.classList.add("fa-solid", "fa-x", "red");
   btn.appendChild(icon);
 }
+
+//display each item in localstorage
+function displayLocalStorageItems() {
+  const itemsFromStorage = getItemsFromLocalStorage();
+  itemsFromStorage.forEach((item) => addLocalStorageToDOM(item));
+}
+
+displayLocalStorageItems();
