@@ -222,4 +222,14 @@ form {
   padding-bottom: 1rem;
   font-size: 20px;
   font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* button in recent searches */
+.rm {
+  background: transparent;
+  border: none;
+  margin-right: 1rem;
 }
