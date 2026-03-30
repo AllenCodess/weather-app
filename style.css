@@ -7,7 +7,13 @@
 }
 
 body {
-  background-color: #2258be;
+  /* background-color: #2258be; */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://cdn.pixabay.com/photo/2018/05/30/15/39/thunderstorm-3441687_1280.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: "Roboto", sans-serif;
   color: white;
 }
