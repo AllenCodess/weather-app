@@ -3,9 +3,11 @@ const apiKey = "11d9a9a0c8e6463287c63348262703";
 //Global DOM Elements
 const form = document.querySelector("form");
 const userInput = document.querySelector(".form-input");
+const searchedItems = document.querySelector(".searched-items-container");
 
 // event listner(s)
 form.addEventListener("submit", searchForm);
+searchedItems.addEventListener("click", clickedItem);
 
 // function to get inputvalue
 function searchForm(e) {
@@ -242,10 +244,31 @@ function addLocalStorageToDOM(location) {
   btn.appendChild(icon);
 }
 
-//display each item in localstorage
+//displays each item in localstorage
 function displayLocalStorageItems() {
   const itemsFromStorage = getItemsFromLocalStorage();
   itemsFromStorage.forEach((item) => addLocalStorageToDOM(item));
 }
 
 displayLocalStorageItems();
+
+// selects the button through event delegation
+
+function clickedItem(e) {
+  if (e.target.closest(".rm")) {
+    removeItem(e.target.parentElement.parentElement);
+  }
+}
+
+function removeItem(selectedItem) {
+  selectedItem.remove();
+  removoeItemFromStorage(selectedItem.firstChild.textContent);
+}
+
+function removoeItemFromStorage(item) {
+  let itemsFromStorage = getItemsFromLocalStorage();
+
+  itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
+
+  localStorage.setItem("locations", JSON.stringify(itemsFromStorage));
+}
