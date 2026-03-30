@@ -207,7 +207,6 @@ function epochConvert(epoch) {
 
 // takes in userinput and saves it in localstorage
 function setLocalStorageItems(location) {
-  console.log(location);
   let itemsFromStorage = getItemsFromLocalStorage();
   itemsFromStorage.push(location);
   if (itemsFromStorage.length > 4) {
