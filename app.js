@@ -27,7 +27,7 @@ async function fetchAPIData(location) {
 
   // fetches data
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=6&aqi=no&alerts=no`,
+    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=6&aqi=no&alerts=no`,
   );
   const data = await response.json();
 
