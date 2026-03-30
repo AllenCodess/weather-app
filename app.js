@@ -161,7 +161,6 @@ function displaysAsideData(data) {
 }
 
 function displaysHourlyData(data) {
-  console.log(data);
   data.forecast.forecastday[0].hour.forEach((hour) => {
     const div = document.createElement("div");
     div.classList.add("hourly-forecast-item");
@@ -215,6 +214,7 @@ function setLocalStorageItems(location) {
   }
 
   localStorage.setItem("locations", JSON.stringify(itemsFromStorage));
+  renderLocalStorageItems();
 }
 
 // retrieve items from localstorage
@@ -226,7 +226,6 @@ function getItemsFromLocalStorage() {
   } else {
     itemsFromStorage = JSON.parse(localStorage.getItem("locations"));
   }
-  console.log(itemsFromStorage);
   return itemsFromStorage;
 }
 
@@ -258,16 +257,16 @@ displayLocalStorageItems();
 
 function clickedItem(e) {
   if (e.target.closest(".rm")) {
-    removeItem(e.target.parentElement.parentElement);
+    removeItem(e.target.closest(".searched-item"));
   }
 }
 
 function removeItem(selectedItem) {
   selectedItem.remove();
-  removoeItemFromStorage(selectedItem.firstChild.textContent);
+  removeItemFromStorage(selectedItem.firstChild.textContent);
 }
 
-function removoeItemFromStorage(item) {
+function removeItemFromStorage(item) {
   let itemsFromStorage = getItemsFromLocalStorage();
 
   itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
