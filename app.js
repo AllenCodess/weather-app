@@ -16,7 +16,6 @@ function searchForm(e) {
   const location = userInput.value;
   fetchAPIData(location);
   setLocalStorageItems(location);
-  addLocalStorageToDOM(location);
 }
 
 // funtion fetches data
@@ -211,6 +210,9 @@ function epochConvert(epoch) {
 function setLocalStorageItems(location) {
   let itemsFromStorage = getItemsFromLocalStorage();
   itemsFromStorage.push(location);
+  if (itemsFromStorage.length > 4) {
+    itemsFromStorage.shift();
+  }
 
   localStorage.setItem("locations", JSON.stringify(itemsFromStorage));
 }
@@ -271,4 +273,14 @@ function removoeItemFromStorage(item) {
   itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
 
   localStorage.setItem("locations", JSON.stringify(itemsFromStorage));
+
+  renderLocalStorageItems();
+}
+
+function renderLocalStorageItems() {
+  searchedItems.innerHTML = "";
+
+  const items = getItemsFromLocalStorage();
+
+  items.forEach((item) => addLocalStorageToDOM(item));
 }
