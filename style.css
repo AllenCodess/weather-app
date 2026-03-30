@@ -22,8 +22,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.4rem 0;
-
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* Form */
@@ -34,7 +33,7 @@ form {
 }
 
 .form-input {
-  padding: 0.5rem 2rem;
+  padding: 0.1rem 2rem;
   border-radius: 20px;
   font-size: 30px;
   border: none;
@@ -43,7 +42,7 @@ form {
 .form-btn {
   font-size: 30px;
   margin-left: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.1rem 1rem;
   border: none;
   border-radius: 20px;
   font-weight: bold;
@@ -250,4 +249,34 @@ form {
 
 .red {
   color: red;
+}
+
+/* Media Queries */
+
+@media (max-width: 1000px) {
+  .grid-items {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+  }
+  .form-input {
+    width: 40%;
+    font-size: 25px;
+  }
+
+  .main-data {
+    width: 90%;
+    height: auto;
+  }
+  .hourly-forecast {
+    width: 90%;
+  }
+
+  .recent-searches-container {
+    width: 90%;
+  }
 }
