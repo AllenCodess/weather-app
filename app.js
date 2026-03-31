@@ -26,12 +26,16 @@ async function fetchAPIData(location) {
     document.querySelector(".day-forecast-container").innerHTML = "";
     document.querySelector(".hourly-forecast-content-items").innerHTML = "";
 
+    fetchingData();
+
     // fetches data
     const response = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=6&aqi=no&alerts=no`,
     );
     const data = await response.json();
 
+    hidingfetchingData();
+    // error handling
     if (response.status !== 200) {
       throw new Error(`Enter a valid City, Zip Code, State or Country.`);
     }
@@ -50,10 +54,23 @@ function showAlert(error) {
   document.querySelector(".error-display").appendChild(alertText);
 
   setTimeout(() => {
-    document.querySelector(".error-display").removeChild(alertText);
-  }, 5000);
+    document.querySelector(".alert-box").remove(alertText);
+  }, 4000);
 }
 
+function fetchingData() {
+  const loader = document.querySelector(".fetching-data");
+  loader.removeAttribute("hidden");
+  loader.innerHTML = "";
+  const p = document.createElement("p");
+  p.textContent = "Fetching Data. . .";
+  loader.appendChild(p);
+}
+
+function hidingfetchingData() {
+  const loader = document.querySelector(".fetching-data");
+  loader.setAttribute("hidden", "");
+}
 // displays data
 function displayMainData(data) {
   const div = document.createElement("div");

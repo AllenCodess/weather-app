@@ -256,6 +256,11 @@ form {
   margin-top: 1rem;
 }
 
+.fetching-data {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
 /* Displays content if it exist */
 .main-data,
 .days-forecast,
