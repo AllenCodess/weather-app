@@ -20,20 +20,38 @@ function searchForm(e) {
 
 // funtion fetches data
 async function fetchAPIData(location) {
-  // Clears data to prevent overlapping
-  document.querySelector("#main-content").innerHTML = "";
-  document.querySelector(".day-forecast-container").innerHTML = "";
-  document.querySelector(".hourly-forecast-content-items").innerHTML = "";
+  try {
+    // Clears data to prevent overlapping
+    document.querySelector("#main-content").innerHTML = "";
+    document.querySelector(".day-forecast-container").innerHTML = "";
+    document.querySelector(".hourly-forecast-content-items").innerHTML = "";
 
-  // fetches data
-  const response = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=6&aqi=no&alerts=no`,
-  );
-  const data = await response.json();
+    // fetches data
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=6&aqi=no&alerts=no`,
+    );
+    const data = await response.json();
 
-  displayMainData(data);
-  displaysAsideData(data);
-  displaysHourlyData(data);
+    if (response.status !== 200) {
+      throw new Error(`Enter a valid City, Zip Code, State or Country.`);
+    }
+    displayMainData(data);
+    displaysAsideData(data);
+    displaysHourlyData(data);
+  } catch (error) {
+    showAlert(error.message);
+  }
+}
+
+function showAlert(error) {
+  const alertText = document.createElement("p");
+  alertText.textContent = error;
+  alertText.classList.add("alert-box");
+  document.querySelector(".error-display").appendChild(alertText);
+
+  setTimeout(() => {
+    document.querySelector(".error-display").removeChild(alertText);
+  }, 5000);
 }
 
 // displays data

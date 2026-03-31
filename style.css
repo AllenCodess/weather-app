@@ -251,6 +251,11 @@ form {
   color: red;
 }
 
+.alert-box {
+  color: red;
+  margin-top: 1rem;
+}
+
 /* Displays content if it exist */
 .main-data,
 .days-forecast,
