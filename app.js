@@ -53,6 +53,7 @@ async function fetchAPIData(location) {
 }
 
 function showAlert(error) {
+  document.querySelector(".error-display").innerHTML = "";
   const alertText = document.createElement("p");
   alertText.textContent = error;
   alertText.classList.add("alert-box");
