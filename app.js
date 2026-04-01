@@ -249,7 +249,11 @@ function epochConvert(epoch) {
 function setLocalStorageItems(location) {
   let itemsFromStorage = getItemsFromLocalStorage();
 
-  if (itemsFromStorage.includes(location.toLowerCase())) {
+  const isDuplicate = itemsFromStorage.some(
+    (item) => item.toLowerCase() === location.toLowerCase(),
+  );
+
+  if (isDuplicate) {
     showAlert("Cannot add duplicates");
     return;
   }

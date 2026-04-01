@@ -22,9 +22,9 @@ Users can do the following:
 ## Features
 
 - Location Search via WeatherAPI
-- Shows error when invalid locaiton is used.
+- Shows error when invalid location is used.
 - Shows indicator when fetching data.
-- Prevents duplicates and emptry string entries
+- Prevents duplicates and empty string entries
 - Adds Previous Searches in Local Storage.
 
 ## Technologies Used
