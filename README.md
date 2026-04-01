@@ -24,6 +24,7 @@ Users can do the following:
 - Location Search via WeatherAPI
 - Shows error when invalid locaiton is used.
 - Shows indicator when fetching data.
+- Prevents duplicates and emptry string entries
 - Adds Previous Searches in Local Storage.
 
 ## Technologies Used
