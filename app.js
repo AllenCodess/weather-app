@@ -20,7 +20,6 @@ function searchForm(e) {
   }
 
   fetchAPIData(location);
-  setLocalStorageItems(location);
 }
 
 // funtion fetches data
@@ -44,6 +43,7 @@ async function fetchAPIData(location) {
     if (response.status !== 200) {
       throw new Error(`Enter a valid City, Zip Code, State or Country.`);
     }
+    setLocalStorageItems(location);
     displayMainData(data);
     displaysAsideData(data);
     displaysHourlyData(data);
@@ -248,6 +248,11 @@ function epochConvert(epoch) {
 // takes in userinput and saves it in localstorage
 function setLocalStorageItems(location) {
   let itemsFromStorage = getItemsFromLocalStorage();
+
+  if (itemsFromStorage.includes(location.toLowerCase())) {
+    showAlert("Cannot add duplicates");
+    return;
+  }
   itemsFromStorage.push(location);
   if (itemsFromStorage.length > 4) {
     itemsFromStorage.shift();
