@@ -1,4 +1,4 @@
-# 🚧Weather App 🚧
+# Weather App
 
 [Live Demo](https://allenweather.netlify.app/)
 
