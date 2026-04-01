@@ -13,7 +13,12 @@ searchedItems.addEventListener("click", clickedItem);
 function searchForm(e) {
   e.preventDefault();
 
-  const location = userInput.value;
+  const location = userInput.value.trim();
+  if (location === "") {
+    showAlert("Empty string not valid");
+    return;
+  }
+
   fetchAPIData(location);
   setLocalStorageItems(location);
 }
@@ -54,7 +59,7 @@ function showAlert(error) {
   document.querySelector(".error-display").appendChild(alertText);
 
   setTimeout(() => {
-    document.querySelector(".alert-box").remove(alertText);
+    document.querySelector(".alert-box").remove();
   }, 4000);
 }
 
