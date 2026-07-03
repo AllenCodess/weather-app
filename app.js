@@ -1,4 +1,4 @@
-const apiKey = "11d9a9a0c8e6463287c63348262703";
+const apiKey = "e1da82d5405d4401b64190319260307";
 
 //Global DOM Elements
 const form = document.querySelector("form");
